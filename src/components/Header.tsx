@@ -168,7 +168,7 @@ export function Header() {
             className="group flex shrink-0 items-center"
           >
             <img
-              src="src/assets/yodha-logo.png"
+              src="/yodha-logo.png"
               alt="Yodha Furniture's"
               className={cn(
                 "w-auto object-contain",
@@ -461,7 +461,7 @@ export function Header() {
               aria-label="Yodha Furniture's home"
             >
               <img
-                src="src/assets/yodha-logo.png"
+                src="/yodha-logo.png"
                 alt="Yodha Furniture's"
                 className="h-[50px] w-auto object-contain"
               />
