@@ -1,0 +1,300 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * YODHA FURNITURE'S — design system
+ * Dark luxury base + warm ivory editorial sections.
+ * All colors in oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 2px);
+  --radius-2xl: calc(var(--radius) + 4px);
+  --radius-3xl: calc(var(--radius) + 8px);
+  --radius-4xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  /* Brand palette */
+  --color-ink: var(--ink);
+  --color-espresso: var(--espresso);
+  --color-walnut: var(--walnut);
+  --color-brand: var(--brand);
+  --color-copper: var(--copper);
+  --color-bronze: var(--bronze);
+  --color-ivory: var(--ivory);
+  --color-beige: var(--beige);
+  --color-stone: var(--stone);
+
+  --font-display: "Bodoni Moda", Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 2px;
+
+  --ink: oklch(0.145 0.006 60);
+  --espresso: oklch(0.213 0.019 51);
+  --walnut: oklch(0.262 0.043 52);
+  --brand: oklch(0.478 0.121 51.5);
+  --copper: oklch(0.577 0.114 55);
+  --bronze: oklch(0.669 0.077 63);
+  --ivory: oklch(0.955 0.011 74);
+  --beige: oklch(0.855 0.017 71);
+  --stone: oklch(0.611 0.009 60);
+
+  --background: var(--ink);
+  --foreground: var(--ivory);
+  --card: var(--espresso);
+  --card-foreground: var(--ivory);
+  --popover: var(--espresso);
+  --popover-foreground: var(--ivory);
+  --primary: var(--brand);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--walnut);
+  --secondary-foreground: var(--ivory);
+  --muted: var(--espresso);
+  --muted-foreground: var(--stone);
+  --accent: var(--copper);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.955 0.011 74 / 14%);
+  --input: oklch(0.955 0.011 74 / 20%);
+  --ring: var(--copper);
+}
+
+/* Warm ivory editorial sections invert the semantic tokens */
+.theme-ivory {
+  --background: var(--ivory);
+  --foreground: var(--espresso);
+  --card: oklch(0.98 0.007 74);
+  --card-foreground: var(--espresso);
+  --popover: var(--ivory);
+  --popover-foreground: var(--espresso);
+  --muted: var(--beige);
+  --muted-foreground: oklch(0.46 0.012 60);
+  --secondary: var(--beige);
+  --secondary-foreground: var(--espresso);
+  --border: oklch(0.213 0.019 51 / 14%);
+  --input: oklch(0.213 0.019 51 / 22%);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  ::selection {
+    background: var(--copper);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--copper);
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--walnut);
+  }
+}
+
+@utility container-y {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 88rem;
+  padding-inline: 1.25rem;
+
+  @media (width >=768px) {
+    padding-inline: 2.5rem;
+  }
+
+  @media (width >=1280px) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Small uppercase editorial label */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+}
+
+@utility display-xl {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  font-size: clamp(2.4rem, 5.5vw, 5.2rem);
+}
+
+@utility display-lg {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.15rem, 4vw, 4rem);
+}
+
+@utility display-md {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+/* Cinematic overlay for photography */
+@utility film-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      oklch(0.145 0.006 60 / 0.92) 0%,
+      oklch(0.145 0.006 60 / 0.45) 45%,
+      oklch(0.145 0.006 60 / 0.25) 100%);
+}
+
+@utility grain {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Animated underline for text links */
+@utility link-line {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@utility hairline {
+  border-top: 1px solid var(--color-border);
+}
+
+@keyframes yodha-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes yodha-zoom {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@utility hero-zoom {
+  animation: yodha-zoom 14s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@utility rise-in {
+  animation: yodha-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
